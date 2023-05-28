@@ -1,7 +1,7 @@
-﻿using SuperShop2.Data.Entities;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using SuperShop2.Data.Entities;
 
 namespace SuperShop2.Data
 {
