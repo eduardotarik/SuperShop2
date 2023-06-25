@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SuperShop2.Data.Entities;
 using SuperShop2.Models;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,6 +27,12 @@ namespace SuperShop2.Data
 
 
         Task<int> DeleteCityAsync(City city);
+
+        IEnumerable<SelectListItem> GetComboCountries();
+
+        IEnumerable<SelectListItem> GetComboCities(int countryId);
+
+        Task<Country> GetCountryAsync(City city);
 
     }
 }
