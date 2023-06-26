@@ -32,5 +32,9 @@ namespace SuperShop2.Helpers
         Task<IdentityResult> ConfirmEmailAsync(User user, string token);
 
         Task<User> GetUserByIdAsync(string useId);
+
+        Task<string> GeneratePasswordResetTokenAsync(User user);
+
+        Task<IdentityResult> ResetPasswordAsync(User user, string token, string password);
     }
 }
