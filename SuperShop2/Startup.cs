@@ -10,6 +10,7 @@ using SuperShop2.Data;
 using SuperShop2.Data.Entities;
 using SuperShop2.Helpers;
 using System.Text;
+using Vereyon.Web;
 
 namespace SuperShop2
 {
@@ -57,6 +58,8 @@ namespace SuperShop2
             {
                 cfg.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddFlashMessage();
 
             services.AddTransient<SeedDb>();
 

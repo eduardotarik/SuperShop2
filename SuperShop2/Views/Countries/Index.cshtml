@@ -5,6 +5,13 @@
 
 <h2>Countries</h2>
 
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+    <div class="alert alert-success">
+        @ViewBag.SuccessMessage
+    </div>
+}
+
 <p>
     <a asp-action="Create" class="btn btn-primary">Create</a>
 </p>

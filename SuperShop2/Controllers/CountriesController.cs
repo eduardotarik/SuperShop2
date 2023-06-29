@@ -4,7 +4,9 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SuperShop2.Data;
 using SuperShop2.Data.Entities;
 using SuperShop2.Models;
+using System;
 using System.Threading.Tasks;
+using Vereyon.Web;
 
 namespace SuperShop2.Controllers
 {
@@ -12,10 +14,14 @@ namespace SuperShop2.Controllers
     public class CountriesController : Controller
     {
         private readonly ICountryRepository _countryRepository;
+        private readonly IFlashMessage _flashMessage;
 
-        public CountriesController(ICountryRepository countryRepository)
+        public CountriesController(
+            ICountryRepository countryRepository,
+            IFlashMessage flashMessage)
         {
             _countryRepository = countryRepository;
+            _flashMessage = flashMessage;
         }
 
         public async Task<IActionResult> DeleteCity(int? id)
@@ -97,6 +103,11 @@ namespace SuperShop2.Controllers
 
         public IActionResult Index()
         {
+            if (TempData.ContainsKey("SuccessMessage"))
+            {
+                ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            }
+
             return View(_countryRepository.GetCountriesWithCities());
         }
 
@@ -127,8 +138,19 @@ namespace SuperShop2.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _countryRepository.CreateAsync(country);
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    await _countryRepository.CreateAsync(country);
+                    TempData["SuccessMessage"] = "Country created successfully!";
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception)
+                {
+                    TempData["ErrorMessage"] = "This country already exists!.";
+                    //_flashMessage.Danger("This country already exists!");
+                }
+
+                return View(country);
             }
 
             return View(country);
