@@ -36,5 +36,11 @@
     <string>1.0</string>
     <key>CFBundleShortVersionString</key>
     <string>1</string>
+    <array>
+        <string>es</string>
+        <string>pt</string>
+    </array>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
   </dict>
 </plist>
