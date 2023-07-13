@@ -40,6 +40,20 @@ namespace SuperShop2.Prism.Helpers
 
         public static string SearchProduct => Resource.SearchProduct;
 
+        public static string IsAvailable => Resource.IsAvailable;
+
+        public static string Stock => Resource.Stock;
+
+        public static string LastPurchase => Resource.LastPurchase;
+
+        public static string LastSale => Resource.LastSale;
+
+
+
+
+
+
+
 
 
 
